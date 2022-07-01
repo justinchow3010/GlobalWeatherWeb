@@ -1,4 +1,4 @@
-# :sunrise_over_mountains: Global Weather Web
+# :sunrise_over_mountains: Global Weather Web (Group project)
 Web Application to view weather information all around the world!  
 Allowing users to monitor real-time information and admins to manipulate the location data.    
   
