@@ -1,0 +1,142 @@
+
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const logger = require('morgan');
+const fs = require('fs');
+const app = express();
+const Schema = mongoose.Schema;
+
+// const serverURL = "mongodb+srv://stu040:p468429-@csci2720.6hfif.mongodb.net/stu040";
+mongoose.connect(serverURL);
+
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, 'Connection error:'));
+
+db.once("open", () => {
+    const UserSchema = Schema({
+        username: { type: String, unique: true, required: true },
+        password: { type: String, required: true },
+        favlocs: [{ type: Schema.Types.ObjectId, ref: "Location" }]
+    });
+
+    const LocationSchema = Schema({
+        locId: { type: Number, required: true, unique: true },
+        name: { type: String, required: true },
+        lat: { type: Number },
+        long: { type: Number },
+        favlocs: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
+    });
+
+    const CommentSchema = Schema({
+        cId: { type: Number, required: true, unique: true },
+        username: { type: String, required: true },
+        content: { type: String }
+    });
+
+    const User = mongoose.model("User", UserSchema);
+    const Location = mongoose.model("Location", LocationSchema);
+    const Comment = mongoose.model("Comment", CommentSchema);
+
+    const checkIsAdmin = (session) => {
+        if (session.username == "admin") return true;
+        return false;
+    };
+
+    app.use(session({
+        secret: 'getsessiontime',
+        cookie: { maxAge: 300000,}
+    }));
+
+    // Server log in Node
+    app.use(logger('common', {
+        stream: fs.createWriteStream('./server_log.log', {flags: 'a'})
+    }));
+    
+    // login -> check user / admin -> add username to cookie
+    app.post("/login", (req, res) => {
+
+    });
+
+    // logout -> expire the cookie
+    app.post("/logout", (req, res) => {
+
+    });
+
+    // return all fav locations
+    app.get("/favloc", (req, res) => {
+
+    });
+
+    // add location to favourites
+    app.post("/favloc", (req, res) => {
+
+    });
+
+    // return all locatioins
+    app.get("/location", (req, res) => {
+
+    });
+
+    // return specific locatioins
+    app.get("/location/:id", (req, res) => {
+
+    });
+
+    // create location (admin)
+    app.post("/location", (req, res) => {
+
+    });
+
+    // update location (admin)
+    app.put("/location/:locId", (req, res) => {
+
+    });
+
+    // delete location (admin)
+    app.delete("/location/:locId", (req, res) => {
+
+    });
+
+    // get all comments for a specific location
+    app.get("/comment/:locId", (req, res) => {
+
+    });
+
+    // add comment to a location
+    app.post("/comment/:locId", (req, res) => {
+
+    });
+
+    // return all users (admin)
+    app.get("/users", (req, res) => {
+
+    });
+
+    // return specific users (admin)
+    app.get("/users/:username", (req, res) => {
+
+    });
+
+    // create users (admin)
+    app.post("/users", (req, res) => {
+
+    });
+
+    // update users (admin)
+    app.put("/users/:username", (req, res) => {
+
+    });
+
+    // delete all users (admin)
+    app.delete("/users/:username", (req, res) => {
+
+    });
+});
+
+
+
+// listen to port 3000
+const server = app.listen(3000);

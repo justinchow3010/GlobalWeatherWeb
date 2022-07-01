@@ -1,0 +1,9 @@
+Error sheet
+
+POST /logout (FIXED)
+POST /favloc/:locid  failed to add no session
+POST /comment/:locId Create failed, cID (FIXED)
+GET /users (FIXED)
+GET /users/:username Session (FIXED)
+PUT /users/:username (body: newname, newpw, newfavlocs) error (FIXED)
+
