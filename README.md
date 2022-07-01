@@ -1,5 +1,5 @@
-# csci2720project
-Web Application to view weather information
+# Global Weather Web
+Web Application to view weather information all around the world!
 
 ## :newspaper: API  
 Rootpath: /api
