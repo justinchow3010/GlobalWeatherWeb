@@ -1,5 +1,8 @@
-# Global Weather Web
-Web Application to view weather information all around the world!
+# :sunrise_over_mountains: Global Weather Web
+Web Application to view weather information all around the world!  
+Allowing users to monitor real-time information and admins to manipulate the location data.    
+  
+![alt text](https://github.com/justinchow3010/GlobalWeatherWeb/blob/main/Map.jpg)  
 
 ## :newspaper: API  
 Rootpath: /api
@@ -24,9 +27,6 @@ GET /users/:username
 POST /users  (body: newname, newpw)  
 PUT /users/:username (body: newname, newpw, newfavlocs *either of them / all of them*)  
 DELETE /users/:username  
-
-Please follow the database schema and the code implemented.
-Return value will be added later on.
 
 ***Remark: Please do not use form-data to submit data for POST API***  
 
